@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<title>图片轮播组件</title>
+		<style type="text/css">
+			html {
+				font-size: 40px;
+			}
+			html, body {
+				width: 100%;
+				margin: 0;
+				padding: 0;
+				overflow-x: hidden;
+			}
+			ul {
+				overflow: auto;
+				margin: 0;
+				padding: 0;
+				width: 32rem;
+			}
+			ul li {
+				list-style: none;
+				display: block;
+				float: left;
+			}
+			ul li img {
+				width: 16rem;
+			}
+			#slider-container {
+				width: 16rem;
+				position: relative;
+			}
+			#slider-point {
+				width: 16rem;
+				position: absolute;
+				bottom: .2rem;
+				text-align: center;
+			}
+			#slider-point span {
+				width: .5rem;
+				height: .5rem;
+				border-radius: 12rem;
+				background: #fff;
+				display: inline-block;
+				margin-right: .2rem;
+			}
+			.current-point {
+				background: red !important;
+			}
+		</style>
+		<script type="text/javascript">
+        ! function(a) {
+            function b() {
+                a.rem = f.getBoundingClientRect().width / 16, f.style.fontSize = a.rem + "px"
+            }
+            var c, d = a.navigator.appVersion.match(/iphone/gi) ? a.devicePixelRatio : 1,
+                    e = 1 / d,
+                    f = document.documentElement,
+                    g = document.createElement("meta");
+            if (a.dpr = d, a.addEventListener("resize", function() {
+                clearTimeout(c), c = setTimeout(b, 300)
+            }, !1), a.addEventListener("pageshow", function(a) {
+                a.persisted && (clearTimeout(c), c = setTimeout(b, 300))
+            }, !1), f.setAttribute("data-dpr", d), g.setAttribute("name", "viewport"), g.setAttribute("content", "initial-scale=" + e + ", maximum-scale=" + e + ", minimum-scale=" + e + ", user-scalable=no"), f.firstElementChild) f.firstElementChild.appendChild(g);
+            else {
+                var h = document.createElement("div");
+                h.appendChild(g), document.write(h.innerHTML)
+            }
+            b()
+        }(window);
+    </script>
+    <script type="text/javascript" src="zepto.min.js"></script>
+	</head>
+	<body>
+		<div id="slider-container">
+			<!-- 滑动图片 -->
+			<ul id="slider-imgs">
+				<!-- <li data-index="0"><img src="http://b2.hucdn.com//upload/hmp/1506/29/71566068788186_640x200.jpg"></li>
+				<li data-index="1"><img src="http://b2.hucdn.com//upload/hmp/1506/29/71437557754078_640x200.jpg"></li> -->
+			</ul>
+			<!-- 图片圆点 -->
+			<div id="slider-point">
+				<!-- <span class="current-point"></span>
+				<span></span> -->
+			</div>
+		</div>
+		<!-- js -->
+		<script type="text/javascript" src="slider.js"></script>
+		<script type="text/javascript">
+		;(function ($) {
+			var imgs = [
+				"http://b2.hucdn.com//upload/hmp/1506/29/71566068788186_640x200.jpg",
+				"http://b2.hucdn.com//upload/hmp/1506/29/71437557754078_640x200.jpg",
+				"http://b2.hucdn.com//upload/hmp/1506/30/55585377571642_640x200.jpg",
+				"http://b2.hucdn.com//upload/hmp/1506/30/64380986272905_640x200.jpg"
+			];
+			var imageLinks = [];
+
+			var slide = new Slider();
+    		slide.init(imgs, imageLinks);
+		})(Zepto)
+		</script>
+	</body>
+</html>
